@@ -1,0 +1,24 @@
+{% extends 'phone/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center alert alert-info">Edit Call Information</h2>
+  <br>
+  <form method="post">
+    {% csrf_token %}
+    <div id="div_id_start_time" class="form-group">
+      <label for="id_start_time" class=" requiredField">Start time<span class="asteriskField">*</span> </label>
+      <div class=""> <input type="datetime-local" name="start_time" value="2021-05-04 15:42:00" class="datetimeinput form-control" required id="id_start_time"> </div> </div>
+    <div id="div_id_end_time" class="form-group"> <label for="id_end_time" class=" requiredField">
+                End time<span class="asteriskField">*</span> </label>
+      <div class=""> <input type="datetime-local" name="end_time" value="2021-05-04 15:44:00" class="datetimeinput form-control" required id="id_end_time"> </div> </div>
+
+    <br>
+    <br>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Edit</button>
+  </form>
+</div>
+
+{% endblock %}
