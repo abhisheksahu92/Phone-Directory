@@ -1,0 +1,16 @@
+{% extends 'phone/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center alert alert-info">Add Call Details</h2>
+  <br>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Add Call</button>
+  </form>
+</div>
+{% endblock %}
