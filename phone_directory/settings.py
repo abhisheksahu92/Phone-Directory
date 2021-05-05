@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'phone',
     'widget_tweaks',
+    'django_countries',
 ]
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

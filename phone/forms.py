@@ -1,11 +1,16 @@
 from django import forms
 from .models import PhoneModel,CallHistoryModel
-from django.db.models import Q
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class PhoneForm(forms.ModelForm):
     class Meta:
         model = PhoneModel
         fields = '__all__'
+        widgets = {
+            'date_of_birth': DateInput(),
+        }
 
     def clean(self):
         cleaned_data = super().clean()

@@ -1,6 +1,6 @@
 from django.views.generic import CreateView,ListView,UpdateView,DeleteView
 from django.views.generic.base import TemplateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import PhoneModel,CallHistoryModel
@@ -20,6 +20,7 @@ class ListPhoneView(ListView):
     model = PhoneModel
     template_name = 'phone/list.html'
     context_object_name = 'phone_list'
+    paginate_by = 15
 
 class EditPhoneView(UpdateView):
     model = PhoneModel
@@ -45,7 +46,7 @@ def call_add(request,pk=None):
     return render(request, template_name='phone/add-call.html', context=context)
 
 def call_list(request,pk=None):
-    call_list_queryset = CallHistoryModel.objects.filter(phone_id = pk)
+    call_list_queryset = CallHistoryModel.objects.filter(phone_id = pk).order_by('-start_time')
     context = {'call_list':call_list_queryset}
     return render(request,template_name='phone/show-call.html',context=context)
 
@@ -62,6 +63,15 @@ def call_edit(request,pk=None):
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {'form': form}
     return render(request, template_name='phone/edit-call.html', context=context)
+
+def call_delete(request,pk):
+    queryset = CallHistoryModel.objects.filter(pk=pk).first()
+    id = queryset.phone_id.phone_id
+    if request.method == 'POST':
+        queryset.delete()
+        return HttpResponseRedirect(reverse('phone:phone-call-show',kwargs={'pk':id}))
+    context = {'calldel':queryset}
+    return render(request, template_name='phone/delete-call.html', context=context)
 
 
 

@@ -1,0 +1,21 @@
+{% extends "phone/base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container py-4">
+    <h4 class="text-center alert alert-info">Deleting Call Information</h4>
+  <br>
+    <div class="row">
+        <div class="col-md-26 card mb-20  mt-3 middle  top">
+            <div class="card-body">
+                <h1>Confirm Delete</h1>
+                    <form action="" method="POST"> {% csrf_token %}
+                        <p>Are you sure you want to delete: "{{ calldel.id }}"?</p>
+                        <input class='btn btn-warning' type='submit' value='Confirm'>
+                        <a class='btn btn-default' href="{% url 'phone:phone-call-show' calldel.phone_id.phone_id %}">Cancel</a>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
