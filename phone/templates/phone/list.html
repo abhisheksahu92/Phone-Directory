@@ -17,8 +17,8 @@
       {% for phone in phone_list %}
        <tr>
          <td>{{phone.first_name}} {% if phone.middle_name %}{{phone.middle_name}}{% endif %} {{phone.last_name}}</td>
-         <td>{{phone.phone}}</td>
          <td>{{phone.email}}</td>
+         <td>{{phone.phone}}</td>
            <td>{{phone.gender}}</td>
          <td>
              <a href="{% url 'phone:phone-call-add' phone.phone_id %}" class="btn btn-warning btn-sm">Add Call Details</a>
@@ -31,7 +31,25 @@
      </tbody>
    </table>
     {% else %}
-        <h4 class="text-center alert alert-warning">No Records</h4>
+        <h2 class="text-center alert alert-warning">No Records</h2>
+    {% endif %}
+<!--    Now the pagination section-->
+
+    {% if is_paginated %}
+        <div class="pagination" >
+            <span class="page-links" >
+                {% if page_obj.has_previous %}
+                <button class="btn btn-outline-primary" type="button"><a href="?page={{ page_obj.previous_page_number }}">Previous</a></button>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                <button class="btn btn-outline-primary" type="button"><a href="?page={{ page_obj.next_page_number }}">Next</a></button>
+                {% endif %}
+            </span>
+        </div>
+    <br>
     {% endif %}
 </div>
 {% endblock content %}

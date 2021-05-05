@@ -1,6 +1,6 @@
-asgiref==3.3.1
-Django==3.1.7
-django-crispy-forms==1.11.1
+asgiref==3.3.4
+Django==3.2.1
+django-crispy-forms==1.11.2
 django-filter==2.4.0
 django-timedeltafield==0.7.10
 django-widget-tweaks==1.4.8
