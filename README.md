@@ -1,5 +1,6 @@
 # Phone Directory
-    It is a Contact Management Software designed to get information of caller and their call details. Using this software, you can easily insert, update and delete the data of a caller and their call details.
+    It is a Contact Management Software designed to get information of caller and their call details. 
+    Using this software, you can easily insert, update and delete the data of a caller and their call details.
 
 ## There are two steps to follow:
 1. Navigate to Phone-Directory directory.
