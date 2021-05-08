@@ -13,11 +13,11 @@ RUN apt-get update
 RUN apt-get install -y git
 
 # Make a new directory to put our code in.
-RUN mkdir /code
+RUN mkdir /phone
 
 # Change the working directory.
 # Every command after this will be run from the /code directory.
-WORKDIR /code
+WORKDIR /phone
 
 ## Copy the requirements.txt file.
 #COPY . /code/
@@ -27,4 +27,4 @@ RUN git clone https://github.com/abhisheksahu92/Phone-Directory.git
 RUN pip install --upgrade pip
 
 # Install the requirements.
-RUN pip install -r /code/Phone-Directory/requirements.txt
+RUN pip install -r /phone/Phone-Directory/requirements.txt
