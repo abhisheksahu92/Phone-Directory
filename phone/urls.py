@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import CreatePhoneView,ListPhoneView,EditPhoneView,DeletePhoneView,IndexPhoneView,call_add,call_list,call_edit,call_delete
 from django_filters.views import FilterView
 from .filters import PhoneFilter
+from .views import CreatePhoneView,ListPhoneView,EditPhoneView,DeletePhoneView,IndexPhoneView,call_add,call_list,call_edit,call_delete
 
 app_name = 'phone'
 urlpatterns = [
